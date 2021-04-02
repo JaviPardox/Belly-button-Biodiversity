@@ -130,4 +130,11 @@ function init()
 
 }
 
+// Grab the value from optionChanged in index.html and use new sample
+function optionChanged(newSample)
+{
+    charts(newSample);
+    meta_data(newSample);
+}
+
 init();
