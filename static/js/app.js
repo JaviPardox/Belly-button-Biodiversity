@@ -73,6 +73,27 @@ function charts(sample)
 
 function meta_data(sample)
 {
+    d3.json("samples.json").then(function(data)
+    {
+        var metadata = data.metadata;
+        // Filter data 
+        var result_array = metadata.filter(function(data)
+        {
+            return data.id == sample;
+        });
+
+        var result = result_array[0];
+        var panel = d3.select("#sample-metadata");
+
+        // Clear existing metadata
+        panel.html("");
+
+        Object.entries(result).forEach(function([key, value])
+        {
+            panel.append("h6").text(`${key.toUpperCase()}: ${value}`)
+        })
+
+    });
 
 }
 
